@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - namespaceclass.akuity.io
+  resources:
+  - namespaceclasses
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - namespaceclass.akuity.io
+  resources:
+  - namespaceclasses/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - namespaceclass.akuity.io
+  resources:
+  - namespaceclasses/status
+  verbs:
+  - get
+  - patch
+  - update
