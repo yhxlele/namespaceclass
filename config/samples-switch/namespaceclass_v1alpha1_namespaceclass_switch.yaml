@@ -4,7 +4,7 @@ metadata:
   labels:
     app.kubernetes.io/name: namespaceclass
     app.kubernetes.io/managed-by: kustomize
-  name: namespaceclass-sample
+  name: namespaceclass-sample-switch
 spec:
   resources:
     - apiVersion: v1
@@ -12,4 +12,4 @@ spec:
       metadata:
         name: namespaceclass-sample-cm
       data:
-        hello: world
+        hello: switched

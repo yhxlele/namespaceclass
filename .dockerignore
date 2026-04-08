@@ -2,6 +2,11 @@
 # Ignore everything by default and re-include only needed files
 **
 
+# Re-include directories that contain Go code.
+!cmd/
+!internal/
+!api/
+
 # Re-include Go source files (but not *_test.go)
 !**/*.go
 **/*_test.go

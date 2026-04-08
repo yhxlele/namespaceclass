@@ -5,9 +5,19 @@ metadata:
   name: manager-role
 rules:
 - apiGroups:
-  - namespaceclass.akuity.io
+  - ""
   resources:
-  - namespaceclasses
+  - namespaces
+  verbs:
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
   verbs:
   - create
   - delete
@@ -17,16 +27,18 @@ rules:
   - update
   - watch
 - apiGroups:
-  - namespaceclass.akuity.io
+  - events.k8s.io
   resources:
-  - namespaceclasses/finalizers
+  - events
   verbs:
+  - create
+  - patch
   - update
 - apiGroups:
   - namespaceclass.akuity.io
   resources:
-  - namespaceclasses/status
+  - namespaceclasses
   verbs:
   - get
-  - patch
-  - update
+  - list
+  - watch

@@ -13,3 +13,4 @@ spec:
         name: namespaceclass-sample-cm
       data:
         hello: world
+        version: v2

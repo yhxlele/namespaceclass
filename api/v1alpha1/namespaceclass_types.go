@@ -18,6 +18,7 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
 )
 
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
@@ -30,9 +31,11 @@ type NamespaceClassSpec struct {
 	// The following markers will use OpenAPI v3 schema to validate the value
 	// More info: https://book.kubebuilder.io/reference/markers/crd-validation.html
 
-	// foo is an example field of NamespaceClass. Edit namespaceclass_types.go to remove/update
+	// resources is a list of embedded resources with apiVersion, kind and metadata fields
 	// +optional
-	Foo *string `json:"foo,omitempty"`
+	// +listType=atomic
+	// +kubebuilder:validation:items:EmbeddedResource
+	Resources []runtime.RawExtension `json:"resources,omitempty"`
 }
 
 // NamespaceClassStatus defines the observed state of NamespaceClass.
