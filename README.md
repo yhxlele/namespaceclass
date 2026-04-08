@@ -1,9 +1,20 @@
 # namespaceclass
-// TODO(user): Add simple overview of use/purpose
+A NamespaceClass defines a set of complimentary resources, policies, etc... 
+which are additionally created and managed when a namespace is created from a certain class.
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
-
+This project is a Kubernetes operator that lets you define reusable “namespace profiles” as 
+a cluster-scoped custom resource called NamespaceClass. 
+Each NamespaceClass contains a list of embedded Kubernetes manifests 
+(e.g. ConfigMaps, Secrets, NetworkPolicies, ResourceQuotas, etc.), 
+and the controller continuously reconciles those resources into any Namespace that opts in 
+by setting the label namespaceclass.akuity.io/name=<class-name>. 
+This makes it easy to standardize baseline configuration across many namespaces and 
+to switch a namespace from one class to another: 
+the controller deletes objects from the previous class and applies the new class’s desired objects, 
+keeping the namespace aligned with the selected class over time. 
+Typical use cases include enforcing per-team defaults, applying environment-specific settings (dev/stage/prod), 
+rolling out common policies, and managing “golden” namespace templates without hand-applying YAML to every namespace.
 ## Getting Started
 
 ### Prerequisites
@@ -111,7 +122,7 @@ previously added to 'dist/chart/values.yaml' or 'dist/chart/manager/manager.yaml
 is manually re-applied afterwards.
 
 ## Contributing
-// TODO(user): Add detailed information on how you would like others to contribute to this project
+**PR** to contribute.
 
 **NOTE:** Run `make help` for more information on all potential `make` targets
 
